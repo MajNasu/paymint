@@ -15,13 +15,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js" charset="utf-8"></script>
     <script src="/js/app.js" charset="utf-8"></script>
     <!---Angular and App.js Scripts--->
-
   </head>
-  <body ng-controller="mainController as ctrl">
 
+  <body ng-controller="mainController as ctrl">
     <!---Nav bar--->
       <header ng-include="'includes/nav.html'" id="nav"></header>
     <!---Nav bar--->
+
+    <!---Page Content-->
+      <div ng-include="'includes/page.html'" id="page"></div>
+    <!---Page Content-->
 
     <!---Footer--->
       <div class="footer navbar-fixed-bottom">
@@ -35,5 +38,6 @@
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <!---Other Scripts--->
+    
   </body>
 </html>

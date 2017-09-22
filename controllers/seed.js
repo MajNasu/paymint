@@ -4,18 +4,18 @@ const router = express.Router();
 const usersInfo = require('../models/users.js');
 
 const newUsers = [
-  {email: "guest@guest.com",
+  {username: "guest@guest.com",
    password: "guest"},
 
-  {email: "guest2@guest.com",
+  {username: "guest2@guest.com",
    password: "guest"},
 
-  {email: "guest3@guest.com",
+  {username: "guest3@guest.com",
    password: "guest"}
 ];
 
 router.get('/', (req, res)=>{
-  userInfo.create(newUsers, function(err){
+  usersInfo.create(newUsers, function(err){
     if(err){
       console.log(err);
       res.send('Error seeding user database');
@@ -26,7 +26,7 @@ router.get('/', (req, res)=>{
 });
 
 router.get('/dropdatabase', (req, res)=>{
-  userInfo.collection.drop();
+  usersInfo.collection.drop();
   res.send('Database successfully dropped');
 });
 

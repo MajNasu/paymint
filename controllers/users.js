@@ -3,28 +3,34 @@ const router = express.Router();
 const Users = require('../models/users.js');
 const bcrypt = require('bcrypt');
 
-//Get all users
+// //Get all users
+// router.get('/', (req, res)=>{
+//   if(req.session.currentUser){
+//     Users.find({}, (err, foundUsers)=>{
+//       res.json(foundUsers);
+//     });
+//   } else {
+//     res.redirect('/users');
+//   }
+// });
+
 router.get('/', (req, res)=>{
-  if(req.session.currentUser){
-    Users.find({}, (err, foundUsers)=>{
-      res.json(foundUsers);
-    });
-  } else {
-    res.redirect('/register');
-  }
+  Users.find({}, (err, foundUsers)=>{
+    res.json(foundUsers);
+  });
 });
 
 //Post / Register a user
-router.get('/register', (req, res, next)=>{
+router.post('/register', (req, res, next)=>{
   const password = req.body.password;
   const passwordHash = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
   const userDbEntry = {};
 
-  userDbEntry.email = req.body.email;
+  userDbEntry.username = req.body.username;
   userDbEntry.password = passwordHash;
   Users.create(userDbEntry, (err, user)=>{
     req.session.james = user._id;
-    req.session.email = user.email;
+    req.session.username = user.username;
     req.session.logged = true;
     console.log('####!!!####', req.session);//remove this guy later
     if(err){
@@ -37,10 +43,10 @@ router.get('/register', (req, res, next)=>{
 
 //Log into a user
 router.post('/login', (req, res)=>{
-  Users.findOne({email: req.body.email}, (err, user)=>{
+  Users.findOne({username: req.body.username}, (err, user)=>{
     if(user){
       if(bcrypt.compareSync(req.body.password, user.password)){
-        req.session.email = user.email;
+        req.session.username = user.username;
         req.session.logged = true;
         res.json(req.session.logged);
       } else {
