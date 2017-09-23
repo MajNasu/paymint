@@ -34,6 +34,38 @@ nav ul {
   top: -10px;
 }
 
+.container {
+  max-width: 420px;
+}
+
+.jumbotron h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  text-align: center;
+  max-width: 100%;
+  overflow:hidden;
+}
+
+
+.receiptContainer{
+  background-color: white;
+  border-radius: 5px;
+  margin: 0 auto;
+  /*padding: 0;*/
+  position:relative;
+  max-width: 75%;
+  padding: 15px;
+}
+
+.receiptContainer button {
+  margin: 0 auto;
+  position: relative;
+  display:block;
+  text-align: right;
+  background-color: #8FBC8F;
+  border: none;
+}
+
 #recform {
   margin: 0 auto;
   text-align: center;
@@ -49,6 +81,10 @@ nav ul {
   margin-left: 48.5%;
 }
 
+.cash{
+  float: right;
+}
+
 button {
   border-radius: 5px;
   background-color: white;
@@ -57,6 +93,17 @@ button {
 
 form input {
   text-align: center;
+}
+
+.glyphicon-remove {
+  color: red;
+  -webkit-transition: -webkit-transform .5s ease-in-out;
+          transition:         transform .5s ease-in-out;
+}
+
+.glyphicon-remove:hover{
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
 }
 
 ::-webkit-input-placeholder {

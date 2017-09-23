@@ -1,20 +1,44 @@
 <!-- <div ng-if="ctrl.loggedIn"> -->
 
-  My Receipts
-  <div ng-repeat="item in items track by $index" class="jumbotron jumbofriend">
-    <h5 class="display-4">{{item.name}}</h5>
-  </div>
+  <div class="container">
+    <div ng-repeat="item in ctrl.items track by $index" class="jumbotron jumbofriend" ng-mouseenter="hoverState = true" ng-mouseleave="hoverState = false">
+      <h2 class="display-4">{{item.restaurant}}</h2>
 
+      <div ng-if="hoverState">
+        <div class="my-4">
+          <div class="receiptContainer">
+
+            <!-- <div ng-repeat"name in ctrl.array.item track by $index">{{name}}</div> : <div ng-repeat"price in ctrl.items track by $index">{{price}}</div> -->
+
+            <span>{{item.item[0].name}}</span><span class="cash">{{item.item[0].price}}</span>
+
+            <!-- <span ng-repeat="name in ctrl.items">{{name}}</span> : <span ng-repeat="price in ctrl.items">{{price}}</span> -->
+
+            <br/>
+            <br/>
+            <div>Tax: <span class="cash">{{item.tax}}</span></div>
+            <div>Tip: <span class="cash">{{item.tip}}</span></div>
+            <div>Total: <span class="cash">{{item.total}}</span></div>
+            <button ng-click="ctrl.editItem(item)">Edit receipt</button>
+              <br/>
+            <button ng-click="ctrl.deleteItem(item)">Clear receipt</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
 
   <div id="recform">
     <span ng-click="ctrl.handleRecForm()">Add Receipt</span>
     <div ng-if="ctrl.showRecForm">
       <form ng-submit="ctrl.postItem()">
+        <br/>
       <input type="text" ng-model="ctrl.regRestaurant" placeholder="Restaurant">
         <br/>
         <br/>
       <div ng-repeat="item in ctrl.array">
-        <span ng-click="ctrl.removeThisItem($index)">[X]</span><input type="text" ng-model="ctrl.array[$index].name" placeholder="Item name"> : <input type="text" ng-model="ctrl.array[$index].price" placeholder="Price">
+        <span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="ctrl.removeThisItem($index)"></span>  <input type="text" ng-model="ctrl.array[$index].name" placeholder="Item name"> : <input type="text" ng-model="ctrl.array[$index].price" placeholder="Price">
       </div>
           <br/>
         <input type="text" ng-model="ctrl.regTax" placeholder="Tax" class="money">
@@ -22,7 +46,7 @@
         <input type="text" ng-model="ctrl.regTip" placeholder="Tip" class="money">
           <br/>
           <br/>
-          <span class="money">Total: {{ctrl.currentTotal}}</span>
+          <span class="money">Total: ${{ctrl.currentTotal}}</span>
           <br/>
           <br/>
         <button type="button" ng-click="ctrl.addNewItem()">Add a new item</button>

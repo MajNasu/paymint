@@ -9,7 +9,8 @@ app.controller('mainController', ['$http', function($http){
   this.items = "";
   this.showRecForm = false;
   this.array = [];
-  this.finalTotal = this.array.reduce((a, b)=>a+b, 0);
+  // this.finalTotal = 0;
+  // this.finalTotal = controller.array.price.reduce((a, b)=>a+b, 0);
   // this.currentTotal = this.array.price.reduce((a, b)=> a + b, 0);
 
   //Declarations for user Ctrl
@@ -20,6 +21,12 @@ app.controller('mainController', ['$http', function($http){
   this.showLogForm = false;
 
   //ITEMS --------------------------------------------->
+  // this.getFinalTotal = function(){
+  //   for(const price in this.array.item){
+  //     this.finalTotal += this.array.item.${price};
+  //   }
+  // },
+
   this.removeThisItem = function(index){
     controller.array.splice(index, 1);
     console.log(this.array);
@@ -62,6 +69,7 @@ app.controller('mainController', ['$http', function($http){
       controller.regTax = "";
       controller.regTip = "";
       controller.showRecForm = false;
+      controller.getItems();
     }, function(error){
       console.log('error', error);
     })
@@ -69,10 +77,10 @@ app.controller('mainController', ['$http', function($http){
   this.editItem = function(item){
     $http({
       method: 'PUT',
-      url: '/items' + item._id,
+      url: '/items/' + item._id,
       data: {
         item: {
-          name: this.regName,
+          name: this.regName, //fix this
           price: this.regPrice
         },
         tax: this.regTax,
@@ -84,12 +92,14 @@ app.controller('mainController', ['$http', function($http){
       console.log('error', error);
     })
   },
+
   this.deleteItem = function(item){
     $http({
       method: 'DELETE',
-      url: '/items' + item._id
+      url: '/items/' + item._id
     }).then(function(response){
       console.log('Deleted receipt successfully');
+      controller.getItems();
     }, function(error){
       console.log('error', error);
     })

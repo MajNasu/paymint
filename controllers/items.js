@@ -29,7 +29,7 @@ router.post('/', (req, res)=>{
 });
 
 //Finalize and remove a receipt
-router.put('/:id', (req, res)=>{
+router.delete('/:id', (req, res)=>{
   Items.findByIdAndRemove(req.params.id, (err, deletedItem)=>{
     res.json(deletedItem);
   });
