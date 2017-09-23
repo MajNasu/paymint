@@ -1,5 +1,6 @@
 body{
   height: 100%;
+  width: 100%;
 }
 
 nav {
@@ -31,4 +32,25 @@ nav ul {
   position: relative;
   display: inline-block;
   top: -10px;
+}
+
+#recform {
+  margin: 0 auto;
+  text-align: center;
+  border: 1px solid black;
+  position: relative;
+  width: 400px;
+  padding: 10px;
+  outline: none;
+  border-radius: 10px;
+}
+
+.money {
+  left: 100px;
+}
+
+button {
+  border-radius: 5px;
+  background-color: white;
+  border: 1px solid black;
 }

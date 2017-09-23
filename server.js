@@ -22,6 +22,9 @@ app.use(session({
 const seedController = require('./controllers/seed.js');
 app.use('/seed', seedController);
 
+const itemsController = require('./controllers/items.js');
+app.use('/items', itemsController);
+
 const usersController = require('./controllers/users.js');
 app.use('/users', usersController);
 

@@ -6,7 +6,8 @@ app.controller('mainController', ['$http', function($http){
   this.formdata = {};
 
   //Declarations for item Ctrl
-
+  this.items = "";
+  this.showRecForm = false;
 
   //Declarations for user Ctrl
   this.loggedIn = false;
@@ -16,12 +17,16 @@ app.controller('mainController', ['$http', function($http){
   this.showLogForm = false;
 
   //ITEMS --------------------------------------------->
+  this.handleRecForm = function(){
+    this.showRecForm = !this.showRecForm;
+  },
+
   this.getItems = function(){
     $http({
       method: 'GET',
       url: '/items'
     }).then(function(response){
-      //something
+      controller.items = response.data;
     }, function(error){
       console.log('error', error);
     })
@@ -41,7 +46,12 @@ app.controller('mainController', ['$http', function($http){
         total: this.regTotal
       }
     }).then(function(response){
-      //something
+      console.log(response);
+      controller.regName = "";//change this and 46
+      controller.regPrice = "";
+      controller.regTax = "";
+      controller.regTip = "";
+      controller.regTotal = "";
     }, function(error){
       console.log('error', error);
     })
@@ -50,8 +60,17 @@ app.controller('mainController', ['$http', function($http){
     $http({
       method: 'PUT',
       url: '/items' + item._id,
+      data: {
+        item: {
+          name: this.regName,
+          price: this.regPrice
+        },
+        tax: this.regTax,
+        tip: this.regTip,
+        total: this.regTotal
+      }
     }).then(function(response){
-      //something
+      console.log(response);
     }, function(error){
       console.log('error', error);
     })
@@ -61,7 +80,7 @@ app.controller('mainController', ['$http', function($http){
       method: 'DELETE',
       url: '/items' + item._id
     }).then(function(response){
-      //something
+      console.log('Deleted receipt successfully');
     }, function(error){
       console.log('error', error);
     })

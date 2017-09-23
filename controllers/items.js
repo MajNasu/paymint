@@ -3,16 +3,22 @@ const router = express.Router();
 const Items = require('../models/items.js');
 
 //Get all the receipts... but why
+// router.get('/', (req, res)=>{
+//   if(req.session.logged == true){
+//     Items.find({}, (err, foundItems)=>{
+//       if(err){
+//         res.send(err);
+//       } else {
+//         res.json(foundItems);
+//       } //closing second if statement
+//     });
+//   } //closing first if statement
+// });
+
 router.get('/', (req, res)=>{
-  if(req.session.logged == true){
-    Items.find({}, (err, foundItems)=>{
-      if(err){
-        res.send(err);
-      } else {
-        res.json(foundItems);
-      } //closing second if statement
-    });
-  } //closing first if statement
+  Items.find({}, (err, foundItems)=>{
+    res.json(foundItems);
+  });
 });
 
 //Create a new receipt
@@ -33,3 +39,5 @@ router.put('/:id', (req, res)=>{
 router.put('/:id', (req, res)=>{
   Items.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, item)=>{})
 })
+
+module.exports = router;

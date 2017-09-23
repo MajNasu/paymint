@@ -10,6 +10,9 @@ const usersSchema = mongoose.Schema({
     type: String,
     required: true
   }
+  // item_ids: [
+  //   id: {type: String}
+  // ]
 });
 
 const Users = mongoose.model('User', usersSchema)

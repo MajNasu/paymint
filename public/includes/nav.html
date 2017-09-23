@@ -17,7 +17,7 @@
         <li class="nav-btn">About</li>
         <li class="nav-btn" ng-if="!ctrl.loggedIn" ng-click="ctrl.handleLogForm()">Log in</li>
         <li class="nav-btn" ng-show="!ctrl.loggedIn" ng-click="ctrl.handleRegForm()">Register</li>
-        <li class="nav-btn" ng-show="ctrl.loggedIn">Log out ({{ctrl.currentUser}})</li>
+        <li class="nav-btn" ng-show="ctrl.loggedIn" ng-click="ctrl.logoutUser()">Log out ({{ctrl.currentUser}})</li>
       </ul>
     </div>
 

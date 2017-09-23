@@ -2,10 +2,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const itemsSchema = new Schema({
 
-  item: {
+  item: [
+  {
     name: {type: String,required: true},
     price: {type: Number, required: true}
-  },
+  }],
 
   tax: {type: Number, required: true},
 
@@ -15,6 +16,6 @@ const itemsSchema = new Schema({
 
 })
 
-const Items = mongoose.model('Items', itemSchema);
+const Items = mongoose.model('Items', itemsSchema);
 
 module.exports = Items;

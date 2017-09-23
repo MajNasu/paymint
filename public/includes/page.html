@@ -1,5 +1,22 @@
-<div ng-if="ctrl.loggedIn">
-  <div>
-    <span ng-click="">Create a new receipt</span>
+<!-- <div ng-if="ctrl.loggedIn"> -->
+  <div id="recform">
+    <span ng-click="ctrl.handleRecForm()">Add Receipt</span>
+    <div ng-if="ctrl.showRecForm">
+      <form ng-submit="ctrl.postItem()">
+        <input type="text" ng-model="ctrl.item.name" placeholder="Item name" > : <input type="text" ng-model="ctrl.item.price" placeholder="Price">
+          <br/>
+        <input type="text" ng-model="ctrl.tax" placeholder="Tax" class="money">
+          <br/>
+        <input type="text" ng-model="ctrl.tip" placeholder="Tip" class="money">
+          <br/>
+        <input type="text" ng-model="ctrl.total" placeholder="Total" class="money">
+          <br/>
+          <br/>
+        <button type="button">Add a new item</button>
+          <br/>
+          <br/>
+        <button type="submit">Submit Receipt</button>
+      </form>
+    </div>
   </div>
-</div>
+<!-- </div> -->
