@@ -1,14 +1,20 @@
 <!-- <div ng-if="ctrl.loggedIn"> -->
 
-  Receipts
+  My Receipts
+  <div ng-repeat="item in items track by $index" class="jumbotron jumbofriend">
+    <h5 class="display-4">{{item.name}}</h5>
+  </div>
 
 
   <div id="recform">
     <span ng-click="ctrl.handleRecForm()">Add Receipt</span>
     <div ng-if="ctrl.showRecForm">
       <form ng-submit="ctrl.postItem()">
+      <input type="text" ng-model="ctrl.regRestaurant" placeholder="Restaurant">
+        <br/>
+        <br/>
       <div ng-repeat="item in ctrl.array">
-        <span ng-click="ctrl.removeThisItem($index)">[X]</span><input type="text" placeholder="Item name"> : <input type="text" placeholder="Price">
+        <span ng-click="ctrl.removeThisItem($index)">[X]</span><input type="text" ng-model="ctrl.array[$index].name" placeholder="Item name"> : <input type="text" ng-model="ctrl.array[$index].price" placeholder="Price">
       </div>
           <br/>
         <input type="text" ng-model="ctrl.regTax" placeholder="Tax" class="money">
@@ -16,7 +22,7 @@
         <input type="text" ng-model="ctrl.regTip" placeholder="Tip" class="money">
           <br/>
           <br/>
-          Current Total: {{ctrl.regPrice}} + {{ctrl.regTax}} + {{ctrl.regTip}}
+          <span class="money">Total: {{ctrl.currentTotal}}</span>
           <br/>
           <br/>
         <button type="button" ng-click="ctrl.addNewItem()">Add a new item</button>

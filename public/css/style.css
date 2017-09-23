@@ -46,11 +46,31 @@ nav ul {
 }
 
 .money {
-  left: 100px;
+  margin-left: 48.5%;
 }
 
 button {
   border-radius: 5px;
   background-color: white;
   border: 1px solid black;
+}
+
+form input {
+  text-align: center;
+}
+
+::-webkit-input-placeholder {
+   text-align: center;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   text-align: center;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   text-align: center;
+}
+
+:-ms-input-placeholder {
+   text-align: center;
 }

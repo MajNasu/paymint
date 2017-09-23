@@ -8,8 +8,8 @@ app.controller('mainController', ['$http', function($http){
   //Declarations for item Ctrl
   this.items = "";
   this.showRecForm = false;
-  this.total = "";
   this.array = [];
+  this.finalTotal = this.array.reduce((a, b)=>a+b, 0);
 
   //Declarations for user Ctrl
   this.loggedIn = false;
@@ -22,15 +22,19 @@ app.controller('mainController', ['$http', function($http){
   this.removeThisItem = function(index){
     controller.array.splice(index, 1);
     console.log(this.array);
-  }
+  },
 
   this.addNewItem = function(){
-    controller.array.push({name: "", price: 0});
+    controller.array.push({name: "", price: ""});
   },
 
   this.handleRecForm = function(){
     this.showRecForm = !this.showRecForm;
   },
+
+  this.getCurrentTotal = function(){
+    this.currentTotal =
+  }
 
   this.getItems = function(){
     $http({
@@ -48,14 +52,19 @@ app.controller('mainController', ['$http', function($http){
       method: 'POST',
       url: '/items',
       data: {
+        restaurant: this.regRestaurant,
         item: this.array,
         tax: this.regTax,
-        tip: this.regTip
+        tip: this.regTip,
+        total: this.finalTotal
       }
     }).then(function(response){
       console.log(response);
+      controller.regRestaurant = "";
+      controller.array = "";
       controller.regTax = "";
       controller.regTip = "";
+      controller.showRecForm = false;
     }, function(error){
       console.log('error', error);
     })
@@ -188,5 +197,6 @@ app.controller('mainController', ['$http', function($http){
     }, function(error){
       console.log('error', error);
     });
-  }
+  },
+  this.getItems();
 }]);

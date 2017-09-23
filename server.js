@@ -29,9 +29,10 @@ const usersController = require('./controllers/users.js');
 app.use('/users', usersController);
 
 //Mongoose connections
-mongoose.connect('mongodb://localhost:27017/paymint');
+const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/paymint';
+mongoose.connect(mongoUri);
 mongoose.connection.once('open', ()=>{
-  console.log('MONGO CONNECTION YES');
+  console.log('MONGOOSE CONNECTION SUCCESSFUL');
 });
 
 //Listening on port
