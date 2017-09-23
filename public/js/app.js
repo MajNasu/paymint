@@ -8,6 +8,8 @@ app.controller('mainController', ['$http', function($http){
   //Declarations for item Ctrl
   this.items = "";
   this.showRecForm = false;
+  this.total = "";
+  this.array = [];
 
   //Declarations for user Ctrl
   this.loggedIn = false;
@@ -17,6 +19,15 @@ app.controller('mainController', ['$http', function($http){
   this.showLogForm = false;
 
   //ITEMS --------------------------------------------->
+  this.removeThisItem = function(index){
+    controller.array.splice(index, 1);
+    console.log(this.array);
+  }
+
+  this.addNewItem = function(){
+    controller.array.push({name: "", price: 0});
+  },
+
   this.handleRecForm = function(){
     this.showRecForm = !this.showRecForm;
   },
@@ -37,21 +48,14 @@ app.controller('mainController', ['$http', function($http){
       method: 'POST',
       url: '/items',
       data: {
-        item: {
-          name: this.regName,
-          price: this.regPrice
-        },
+        item: this.array,
         tax: this.regTax,
-        tip: this.regTip,
-        total: this.regTotal
+        tip: this.regTip
       }
     }).then(function(response){
       console.log(response);
-      controller.regName = "";//change this and 46
-      controller.regPrice = "";
       controller.regTax = "";
       controller.regTip = "";
-      controller.regTotal = "";
     }, function(error){
       console.log('error', error);
     })
@@ -66,8 +70,7 @@ app.controller('mainController', ['$http', function($http){
           price: this.regPrice
         },
         tax: this.regTax,
-        tip: this.regTip,
-        total: this.regTotal
+        tip: this.regTip
       }
     }).then(function(response){
       console.log(response);
