@@ -10,6 +10,7 @@ app.controller('mainController', ['$http', function($http){
   this.showRecForm = false;
   this.array = [];
   this.finalTotal = this.array.reduce((a, b)=>a+b, 0);
+  // this.currentTotal = this.array.price.reduce((a, b)=> a + b, 0);
 
   //Declarations for user Ctrl
   this.loggedIn = false;
@@ -31,10 +32,6 @@ app.controller('mainController', ['$http', function($http){
   this.handleRecForm = function(){
     this.showRecForm = !this.showRecForm;
   },
-
-  this.getCurrentTotal = function(){
-    this.currentTotal =
-  }
 
   this.getItems = function(){
     $http({
