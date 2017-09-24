@@ -9,7 +9,7 @@ app.controller('mainController', ['$http', function($http){
   this.items = "";
   this.showRecForm = false;
   this.updatedArray = [];
-  this.array = [];
+  this.array = [{name: "", price: ""}];
   this.editStatus = false;
   this.finalTotal = 0;
   // this.finalTotal = controller.array.price.reduce((a, b)=>a+b, 0);
