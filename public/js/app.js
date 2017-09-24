@@ -8,9 +8,10 @@ app.controller('mainController', ['$http', function($http){
   //Declarations for item Ctrl
   this.items = "";
   this.showRecForm = false;
+  this.updatedArray = [];
   this.array = [];
   this.editStatus = false;
-  // this.finalTotal = 0;
+  this.finalTotal = 0;
   // this.finalTotal = controller.array.price.reduce((a, b)=>a+b, 0);
   // this.currentTotal = this.array.price.reduce((a, b)=> a + b, 0);
 
@@ -22,11 +23,18 @@ app.controller('mainController', ['$http', function($http){
   this.showLogForm = false;
 
   //ITEMS --------------------------------------------->
-  // this.getFinalTotal = function(){
-  //   for(const price in this.array.item){
-  //     this.finalTotal += this.array.item.${price};
-  //   }
+  // this.getFinalTotal = function(x){
+  //   this.finalTotal += x;
   // },
+
+  // this.getFinalTotal2 = function(array){
+  //
+  // },
+  //
+  // this.dothis = function(){
+  //   console.log(controller.items[0].item);
+  // },
+
   this.toggleEditStatus = function(){
     controller.editStatus = !controller.editStatus;
   }

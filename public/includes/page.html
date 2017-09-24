@@ -1,5 +1,5 @@
 <!-- <div ng-if="ctrl.loggedIn"> -->
-
+<!-- <button ng-click="ctrl.dothis()">CLICK ME</button> -->
   <div class="container">
     <div ng-repeat="item in ctrl.items track by $index" class="jumbotron jumbofriend" ng-mouseenter="hoverState = true" ng-mouseleave="hoverState = false">
       <h2 class="display-4">{{item.restaurant}}</h2>
@@ -9,19 +9,17 @@
         <div class="my-4">
           <div class="receiptContainer">
 
-            <!-- <div ng-repeat"name in ctrl.array.item track by $index">{{name}}</div> : <div ng-repeat"price in ctrl.items track by $index">{{price}}</div> -->
-
-            <span>{{item.item[0].name}}</span><span class="cash">{{item.item[0].price}}</span>
-              <br/>
-            <span>{{item.item[1].name}}</span><span class="cash">{{item.item[1].price}}</span>
-
-            <!-- <span ng-repeat="name in ctrl.items">{{name}}</span> : <span ng-repeat="price in ctrl.items">{{price}}</span> -->
+            <span ng-repeat="itemz in ctrl.items">
+              <div ng-repeat="name in itemz.item">
+                {{name.name}} <span class="cash">{{name.price}}</span>
+              </div>
+            </span>
 
             <br/>
             <br/>
             <div>Tax: <span class="cash">{{item.tax}}</span></div>
             <div>Tip: <span class="cash">{{item.tip}}</span></div>
-            <div>Total: <span class="cash">{{item.total}}</span></div>
+            <div>Total: <span class="cash">{{item.finalTotal}}</span></div>
               <br/>
             <button ng-click="ctrl.toggleEditStatus()">Edit receipt</button>
               <br/>
@@ -37,6 +35,15 @@
           <div class="receiptContainerEdit">
             <form ng-submit="ctrl.editItem(item); ctrl.toggleEditStatus()">
               <input type="text" ng-model="ctrl.updatedRestaurant" placeholder="Restaurant">
+
+              <!-- <input type="text" ng-model="ctrl.updatedArray[$index.name]" placeholder="Item" class="inl"><input type="text" ng-model="ctrl.updatedArray[$index.name]" placeholder="Price" class="inl"> -->
+
+
+              <!-- <div ng-repeat="item in ctrl.array">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="ctrl.removeThisItem($index)"></span>
+                <input type="text" ng-model="ctrl.updatedArray[$index].name" placeholder="{{ctrl.updatedArray[$index].name}}"> : <input type="text" ng-model="ctrl.updatedArray[$index].price" placeholder="{{ctrl.updatedArray[$index].price}}">
+              </div> -->
+
               <input type="text" ng-model="ctrl.updatedTax" placeholder="Tax">
               <input type="text" ng-model="ctrl.updatedTip" placeholder="Tip">
                 <br/>
