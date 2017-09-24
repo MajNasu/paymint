@@ -13,7 +13,7 @@ app.controller('mainController', ['$http', function($http){
   this.editStatus = false;
   this.finalTotal = 0;
   // this.finalTotal = controller.array.price.reduce((a, b)=>a+b, 0);
-  // this.currentTotal = this.array.price.reduce((a, b)=> a + b, 0);
+  this.currentTotal = 0;
 
   //Declarations for user Ctrl
   this.loggedIn = false;
@@ -23,12 +23,27 @@ app.controller('mainController', ['$http', function($http){
   this.showLogForm = false;
 
   //ITEMS --------------------------------------------->
+  this.getCurrentTotal = function(){
+    this.array.price.reduce((a, b)=> a + b, 0);
+  },
+
+  // this.getCurrentTotal2 = function(){
+  //   console.log('this is current total', this.currentTotal);
+  //   console.log('this is ctrl array', this.array);
+  // }
+  this.getCurrentTotal2 = function(){
+    for(let i = 0; i < this.array.length-1; i++){
+      this.currentTotal += this.array[i].price;
+    }
+    console.log(this.currentTotal);
+  }
   // this.getFinalTotal = function(x){
   //   this.finalTotal += x;
+  //   console.log(controller.finalTotal);
   // },
-
-  // this.getFinalTotal2 = function(array){
   //
+  // this.getFinalTotal2 = function(array){
+  //   this.finalTotal += this.items
   // },
   //
   // this.dothis = function(){

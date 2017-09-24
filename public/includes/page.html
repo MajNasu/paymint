@@ -1,5 +1,5 @@
 <!-- <div ng-if="ctrl.loggedIn"> -->
-<!-- <button ng-click="ctrl.dothis()">CLICK ME</button> -->
+<button ng-click="ctrl.getCurrentTotal2()">CLICK ME</button>
   <div class="container">
     <div ng-repeat="item in ctrl.items track by $index" class="jumbotron jumbofriend" ng-mouseenter="hoverState = true" ng-mouseleave="hoverState = false">
       <h2 class="display-4">{{item.restaurant}}</h2>
@@ -12,6 +12,7 @@
             <span ng-repeat="itemz in ctrl.items">
               <div ng-repeat="name in itemz.item">
                 {{name.name}} <span class="cash">{{name.price}}</span>
+                <!-- {{ctrl.getFinalTotal(name.price)}} -->
               </div>
             </span>
 
@@ -19,7 +20,7 @@
             <br/>
             <div>Tax: <span class="cash">{{item.tax}}</span></div>
             <div>Tip: <span class="cash">{{item.tip}}</span></div>
-            <div>Total: <span class="cash">{{item.finalTotal}}</span></div>
+            <div>Total: <span class="cash">{{ctrl.finalTotal}}</span></div>
               <br/>
             <button ng-click="ctrl.toggleEditStatus()">Edit receipt</button>
               <br/>
@@ -70,6 +71,7 @@
         <br/>
       <div ng-repeat="item in ctrl.array">
         <span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="ctrl.removeThisItem($index)"></span>  <input type="text" ng-model="ctrl.array[$index].name" placeholder="Item name"> : <input type="text" ng-model="ctrl.array[$index].price" placeholder="Price">
+        <!-- {{ctrl.getCurrentTotal(ctrl.array[$index].price)}} -->
       </div>
           <br/>
         <input type="text" ng-model="ctrl.regTax" placeholder="Tax" class="money">
