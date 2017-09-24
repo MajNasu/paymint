@@ -4,13 +4,16 @@
     <div ng-repeat="item in ctrl.items track by $index" class="jumbotron jumbofriend" ng-mouseenter="hoverState = true" ng-mouseleave="hoverState = false">
       <h2 class="display-4">{{item.restaurant}}</h2>
 
-      <div ng-if="hoverState">
+      <!---SEE ALL THE SHIT--->
+      <div ng-if="hoverState && !ctrl.editStatus">
         <div class="my-4">
           <div class="receiptContainer">
 
             <!-- <div ng-repeat"name in ctrl.array.item track by $index">{{name}}</div> : <div ng-repeat"price in ctrl.items track by $index">{{price}}</div> -->
 
             <span>{{item.item[0].name}}</span><span class="cash">{{item.item[0].price}}</span>
+              <br/>
+            <span>{{item.item[1].name}}</span><span class="cash">{{item.item[1].price}}</span>
 
             <!-- <span ng-repeat="name in ctrl.items">{{name}}</span> : <span ng-repeat="price in ctrl.items">{{price}}</span> -->
 
@@ -19,12 +22,33 @@
             <div>Tax: <span class="cash">{{item.tax}}</span></div>
             <div>Tip: <span class="cash">{{item.tip}}</span></div>
             <div>Total: <span class="cash">{{item.total}}</span></div>
-            <button ng-click="ctrl.editItem(item)">Edit receipt</button>
+              <br/>
+            <button ng-click="ctrl.toggleEditStatus()">Edit receipt</button>
               <br/>
             <button ng-click="ctrl.deleteItem(item)">Clear receipt</button>
           </div>
         </div>
       </div>
+      <!---END OF SEEING ALL THE SHIT---->
+
+      <!---EDIT ALL THE SHIT--->
+      <div ng-if="hoverState && ctrl.editStatus">
+        <div class="my-4">
+          <div class="receiptContainerEdit">
+            <form ng-submit="ctrl.editItem(item); ctrl.toggleEditStatus()">
+              <input type="text" ng-model="ctrl.updatedRestaurant" placeholder="Restaurant">
+              <input type="text" ng-model="ctrl.updatedTax" placeholder="Tax">
+              <input type="text" ng-model="ctrl.updatedTip" placeholder="Tip">
+                <br/>
+                <br/>
+              <button ng-click="ctrl.toggleEditStatus()">Cancel</button>
+                <br/>
+              <button type="submit">Submit Changes</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!---EDIT ALL OF THIS SHIT--->
 
     </div>
   </div>

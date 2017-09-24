@@ -37,7 +37,9 @@ router.delete('/:id', (req, res)=>{
 
 //Edit a receipt
 router.put('/:id', (req, res)=>{
-  Items.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, item)=>{})
-})
+  Items.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedItem)=>{
+    res.json(updatedItem);
+  });
+});
 
 module.exports = router;
