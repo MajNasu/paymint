@@ -9,7 +9,7 @@ app.controller('mainController', ['$http', function($http){
   this.items = "";
   this.showRecForm = false;
   this.updatedArray = [];
-  this.array = [{name: "", price: ""}];
+  this.array = [];
   this.editStatus = false;
   this.finalTotal = 0;
   // this.finalTotal = controller.array.price.reduce((a, b)=>a+b, 0);
@@ -115,8 +115,8 @@ app.controller('mainController', ['$http', function($http){
     }).then(function(response){
       console.log(response);
       controller.updatedRestaurant = "";
-      controller.tax = "";
-      controller.tip = "";
+      controller.updatedTax = "";
+      controller.updatedTip = "";
       controller.getItems();
     }, function(error){
       console.log('error', error);
