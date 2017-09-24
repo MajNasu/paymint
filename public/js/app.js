@@ -60,6 +60,8 @@ app.controller('mainController', ['$http', function($http){
   },
 
   this.addNewItem = function(){
+    console.log(controller.array);
+    console.log(this.array);
     controller.array.push({name: "", price: ""});
   },
 
@@ -92,7 +94,7 @@ app.controller('mainController', ['$http', function($http){
     }).then(function(response){
       console.log(response);
       controller.regRestaurant = "";
-      controller.array = "";
+      controller.array = [];
       controller.regTax = "";
       controller.regTip = "";
       controller.showRecForm = false;

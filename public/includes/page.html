@@ -9,12 +9,12 @@
         <div class="my-4">
           <div class="receiptContainer">
 
-            <span ng-repeat="itemz in ctrl.items">
-              <div ng-repeat="name in itemz.item">
+            <!-- <span ng-repeat="itemz in ctrl.items"> -->
+              <div ng-repeat="name in item.item">
                 {{name.name}} <span class="cash">{{name.price}}</span>
                 <!-- {{ctrl.getFinalTotal(name.price)}} -->
               </div>
-            </span>
+            <!-- </span> -->
 
             <br/>
             <br/>
