@@ -1,5 +1,6 @@
 <!-- <div ng-if="ctrl.loggedIn"> -->
-<button ng-click="ctrl.getCurrentTotal2()">CLICK ME</button>
+<!-- <button ng-click="ctrl.getCurrentTotal2()">CLICK ME</button> -->
+
   <div class="container">
     <div ng-repeat="item in ctrl.items track by $index" class="jumbotron jumbofriend" ng-mouseenter="hoverState = true" ng-mouseleave="hoverState = false">
       <h2 class="display-4">{{item.restaurant}}</h2>
@@ -38,7 +39,11 @@
               <input type="text" ng-model="ctrl.updatedRestaurant" placeholder="Restaurant">
 
               <!-- <input type="text" ng-model="ctrl.updatedArray[$index.name]" placeholder="Item" class="inl"><input type="text" ng-model="ctrl.updatedArray[$index.name]" placeholder="Price" class="inl"> -->
-
+              <div ng-repeat="item in ctrl.items">
+                <div ng-repeat="name in item.item">
+                  <input class="inliner" type="text" ng-model="ctrl.updatedArray[$index].name" placeholder="Item"> : <input class="inliner" type="text" ng-model="ctrl.updatedArray[$index].price" placeholder="Price">
+                </div>
+              </div>
 
               <!-- <div ng-repeat="item in ctrl.array">
                 <span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="ctrl.removeThisItem($index)"></span>

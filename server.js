@@ -3,13 +3,11 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser')
-const methodOverride = require('method-override');
 const session = require('express-session');
 const bcrypt = require('bcrypt');
 const port = process.env.PORT || 3000;
 
 //Middleware
-app.use(methodOverride('_method'));
 app.use(bodyParser.json());
 app.use(express.static('public'));
 app.use(session({

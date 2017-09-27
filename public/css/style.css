@@ -2,6 +2,9 @@ body{
   height: 100%;
   width: 100%;
 }
+.inliner {
+
+}
 
 nav {
   background: #7F828F;
@@ -103,6 +106,8 @@ button {
 form input {
   text-align: center;
 }
+
+
 
 .glyphicon-remove {
   color: red;

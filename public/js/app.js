@@ -117,6 +117,7 @@ app.controller('mainController', ['$http', function($http){
     }).then(function(response){
       console.log(response);
       controller.updatedRestaurant = "";
+      controller.updatedArray = [];
       controller.updatedTax = "";
       controller.updatedTip = "";
       controller.getItems();
